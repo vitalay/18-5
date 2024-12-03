@@ -3,7 +3,7 @@
 <div class="container pt-5">
   <div class="card">
     <h2>Актуальные новости {{ now }}</h2>
-    <span>Открыто: {{ openRate }} </span>
+    <span>Открыто: <strong>{{ openRate }}</strong> | Прочитано <strong>{{ readRate }} </strong> </span>
 
   </div>
 
@@ -33,6 +33,7 @@ export default {
    return {
      now: new Date().toLocaleDateString(),
      openRate: 0,
+     readRate: 0,
      news: [
 
      {

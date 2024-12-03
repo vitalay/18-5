@@ -5,7 +5,12 @@
     <button class="btn" @click="open">
      {{isNeweOpen ? 'Закрыть' : 'Открыть'}}
     </button>
-    <p v-if="isNeweOpen">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, officia!</p>
+    <div v-if="isNeweOpen">
+      <hr />
+    <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, officia!</p>
+     <button class="btn primary">Прочесть новость</button>
+  </div>
+
   </div>
 
 </template>
