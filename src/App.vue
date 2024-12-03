@@ -4,6 +4,18 @@
       <h2>Slots</h2>
     </div>
 
+
+
+
+<app-list>
+ <template #default="slotProps">
+  <span style="color:red">
+    <strong> {{ slotProps.idx + 1 }} </strong>
+    Item: {{ slotProps. iter }}</span>
+ </template>
+</app-list>
+
+
     <app-block>
       <p>Это самый важный текст</p>
 
@@ -18,15 +30,20 @@
       </template>
 
     </app-block>
+
+
+
+
   </div>
 </template>
 
 <script>
 import AppBlock from './AppBlock.vue';
-
+import AppList from './AppList.vue'
 export default {
   components: {
     AppBlock,
+    AppList
   },
 };
 </script>
