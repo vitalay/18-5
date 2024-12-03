@@ -90,5 +90,10 @@ export default {
 
 
 <style scoped>
+ h2 {
+color:
+#42b883;
+
+}
 
 </style>
