@@ -1,6 +1,6 @@
 <template>
   <button class="btn" :class="color" @click="$emit('action')">
-   {{ text }}
+    {{ text }}
   </button>
 </template>
 

@@ -14,6 +14,7 @@
  :id="item.id"
  :is-open="item.isOpen"
  :was-read="item.wasRead"
+
  @open-news="openNews"
  @read-news="readNews"
  @unmark="unreadNews"
@@ -57,6 +58,12 @@ export default {
 
 
      ]
+   }
+ },
+ provide() {
+   return {
+     title: 'Новости',
+     news: this.news
    }
  },
  methods: {

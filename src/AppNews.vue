@@ -20,14 +20,19 @@
       color="primary"
       @click="mark">
     </app-button>
+
+    <appNewsList></appNewsList>
     </div>
   </div>
 </template>
 
 <script>
+
 import AppButton from './AppButton.vue';
+import AppNewsList from './AppNewsList.vue';
 export default {
   props: {
+
     wasRead: {
       type: Boolean,
       default: false,
@@ -77,7 +82,9 @@ export default {
     // },
   },
   components: {
-    AppButton
+    AppButton,
+    AppNewsList
   },
+
 };
 </script>
