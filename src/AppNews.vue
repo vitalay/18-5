@@ -15,7 +15,10 @@
 <script>
 export default {
   props: {
-    wasRead: Boolean,
+    wasRead: {
+      type: Boolean,
+      default: false,
+    },
     title: {
       type: String,
       required: true,
@@ -32,7 +35,7 @@ export default {
   },
   emits: {
     'open-news': null,
-    'read-news': null,
+    'read-news': (id) => typeof id === 'number',
   },
   data() {
     return {
@@ -48,7 +51,12 @@ export default {
     },
     mark() {
       this.isNewsOpen = false;
-      this.$emit('read-news', this.id);
+      const id = this.id;
+      if (!id) {
+        console.warn('Нет параметра id для emit read-news');
+        return;
+      }
+      this.$emit('read-news', id);
     },
   },
 };
