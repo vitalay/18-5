@@ -1,6 +1,10 @@
 <template>
   <div class="card">
     <h3>{{ title }}</h3>
+    <button class="btn danger" v-if="wasRead" @click="$emit('unmark', id)">
+      Отметить непрочитаной
+    </button>
+
     <button class="btn" @click="open">
       {{ isNewsOpen ? 'Закрыть' : 'Открыть' }}
     </button>
@@ -36,6 +40,7 @@ export default {
   emits: {
     'open-news': null,
     'read-news': (id) => typeof id === 'number',
+    'unmark': (id) => typeof id === 'number',
   },
   data() {
     return {
@@ -58,6 +63,9 @@ export default {
       }
       this.$emit('read-news', id);
     },
+    // unmark() {
+    //   this.$emit('unmark', this.id);
+    // },
   },
 };
 </script>

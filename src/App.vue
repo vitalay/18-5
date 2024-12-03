@@ -16,6 +16,7 @@
  :was-read="item.wasRead"
  @open-news="openNews"
  @read-news="readNews"
+ @unmark="unreadNews"
 
  />
 
@@ -65,6 +66,10 @@ export default {
    readNews(id) {
      this.news.find(item => item.id === id).wasRead = true
      this.readRate++
+   },
+   unreadNews(id) {
+     this.news.find(item => item.id === id).wasRead = false
+     this.readRate--
    }
  },
  components: {
