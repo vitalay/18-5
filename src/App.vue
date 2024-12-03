@@ -8,10 +8,10 @@
 
 
 <app-list>
- <template #default="slotProps">
+ <template #default="{idx, iter}">
   <span style="color:red">
-    <strong> {{ slotProps.idx + 1 }} </strong>
-    Item: {{ slotProps. iter }}</span>
+    <strong> {{ idx + 1 }} </strong>
+    Item: {{ iter }}</span>
  </template>
 </app-list>
 
