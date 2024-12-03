@@ -13,7 +13,10 @@
  :key="item.id"
  :id="item.id"
  :is-open="item.isOpen"
+ :was-read="item.wasRead"
  @open-news="openNews"
+ @read-news="readNews"
+
  />
 
 
@@ -39,13 +42,15 @@ export default {
      {
        id: 1,
        title: 'Blog posta ',
-       isOpen: false
+       isOpen: false,
+       wasRead: false
      },
 
      {
        id: 2,
        title: 'Blog postb ',
-       isOpen: false
+       isOpen: false,
+       wasRead: false
      },
 
 
@@ -56,6 +61,10 @@ export default {
  methods: {
    openNews() {
      this.openRate++
+   },
+   readNews(id) {
+     this.news.find(item => item.id === id).wasRead = true
+     this.readRate++
    }
  },
  components: {

@@ -1,64 +1,55 @@
 <template>
-
-   <div class="card">
+  <div class="card">
     <h3>{{ title }}</h3>
     <button class="btn" @click="open">
-     {{isNeweOpen ? 'Закрыть' : 'Открыть'}}
+      {{ isNewsOpen ? 'Закрыть' : 'Открыть' }}
     </button>
-    <div v-if="isNeweOpen">
+    <div v-if="isNewsOpen">
       <hr />
-    <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, officia!</p>
-     <button class="btn primary">Прочесть новость</button>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, officia!</p>
+      <button v-if="!wasRead" class="btn primary" @click="mark">Прочесть новость</button>
+    </div>
   </div>
-
-  </div>
-
 </template>
-
 
 <script>
 export default {
-
-  //props: ['title'],
-  //emits: ['open-news'],
   props: {
+    wasRead: Boolean,
     title: {
       type: String,
-      required: true
+      required: true,
     },
     id: {
       type: Number,
-      required: true
-
+      required: true,
     },
     isOpen: {
       type: Boolean,
       required: false,
-      default: false
-    }
-
-
+      default: false,
     },
+  },
   emits: {
-    'open-news': null
+    'open-news': null,
+    'read-news': null,
   },
   data() {
     return {
-        isNeweOpen: this.isOpen
-      //isOpen: false
-    }
+      isNewsOpen: this.isOpen,
+    };
   },
   methods: {
     open() {
-      this.isNeweOpen = !this.isNeweOpen
-      if (this.isNeweOpen) {
-        this.$emit('open-news')
+      this.isNewsOpen = !this.isNewsOpen;
+      if (this.isNewsOpen) {
+        this.$emit('open-news');
       }
-
-    }
+    },
+    mark() {
+      this.isNewsOpen = false;
+      this.$emit('read-news', this.id);
+    },
   },
-
-}
-
-
+};
 </script>
