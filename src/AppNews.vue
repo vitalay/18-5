@@ -15,6 +15,7 @@
 export default {
 
   //props: ['title'],
+  //emits: ['open-news'],
   props: {
     title: {
       type: String,
@@ -33,8 +34,9 @@ export default {
 
 
     },
-
-
+  emits: {
+    'open-news': null
+  },
   data() {
     return {
         isNeweOpen: this.isOpen
@@ -49,7 +51,8 @@ export default {
       }
 
     }
-  }
+  },
+
 }
 
 
