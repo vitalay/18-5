@@ -1,9 +1,12 @@
 <template>
   <div class="container pt-1">
     <div class="card">
+
+      <async-component />
       <h2>Динамические и асинхронные компоненты</h2>
 
       <app-button
+      ref="myBtn"
         :color="oneColor"
         @action="active = 'one'"
       >
