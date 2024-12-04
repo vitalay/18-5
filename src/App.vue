@@ -4,21 +4,23 @@
       <h2>Динамические и асинхронные компоненты</h2>
 
       <app-button
-        :color="active === 'one' ? 'primary' : ''"
+        :color="oneColor"
         @action="active = 'one'"
-        >One</app-button
       >
+        One
+      </app-button>
 
       <app-button
-        :color="active === 'two' ? 'primary' : ''"
+        :color="twoColor"
         @action="active = 'two'"
-        >Two</app-button
       >
-<app-text-one v-if="active === 'one'"></app-text-one>
+        Two
+      </app-button>
 
-<app-text-two v-else-if="active === 'two'"></app-text-two>
-
-
+      <!-- Только один способ рендеринга -->
+      <keep-alive>
+        <component :is="componentName" />
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -34,22 +36,29 @@ export default {
       active: "one", // Начальное состояние активной кнопки
     };
   },
+  computed: {
+    componentName() {
+      return this.active === "one" ? "AppTextOne" : "AppTextTwo";
+    },
+    oneColor() {
+      return this.active === "one" ? "primary" : "";
+    },
+    twoColor() {
+      return this.active === "two" ? "primary" : "";
+    },
+  },
   components: {
     AppButton,
     AppTextOne,
-    AppTextTwo
+    AppTextTwo,
   },
 };
 </script>
 
 <style scoped>
-
 .container {
   max-width: 600px;
   margin: 0 auto;
-
-
-
 }
 .card {
   background-color: #867d7d;
@@ -58,6 +67,4 @@ export default {
   padding: 1rem;
   text-align: center;
 }
-
-
 </style>
